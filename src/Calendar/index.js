@@ -67,6 +67,7 @@ export default class Calendar extends Component {
     className: PropTypes.string,
     disabledDates: PropTypes.arrayOf(PropTypes.instanceOf(Date)),
     disabledDays: PropTypes.arrayOf(PropTypes.number),
+    markedDates: PropTypes.arrayOf(PropTypes.instanceOf(Date)),
     display: PropTypes.oneOf(['years', 'days']),
     displayOptions: PropTypes.shape({
       hideYearsOnSelect: PropTypes.bool,
@@ -190,6 +191,9 @@ export default class Calendar extends Component {
   }
   getDisabledDates(disabledDates) {
     return disabledDates && disabledDates.map((date) => format(parse(date), 'YYYY-MM-DD'));
+  }
+  getMarkedDates(markedDates) {
+    return markedDates && markedDates.map((date) => format(parse(date), 'YYYY-MM-DD'));
   }
   getDisplayOptions(displayOptions = this.props.displayOptions) {
     return Object.assign({}, defaultDisplayOptions, displayOptions);
@@ -430,6 +434,7 @@ export default class Calendar extends Component {
     } = this.getDisplayOptions();
     const {display, isScrolling, showToday, shouldHeaderAnimate} = this.state;
     const disabledDates = this.getDisabledDates(this.props.disabledDates);
+    const markedDates = this.getMarkedDates(this.props.markedDates);
     const selectedDate = this.sanitizeDate(this.state.selectedDate, disabledDates);
     const locale = this.getLocale();
     const theme = this.getTheme();
@@ -482,6 +487,7 @@ export default class Calendar extends Component {
               selectedDate={selectedDate}
               disabledDates={disabledDates}
               disabledDays={disabledDays}
+              markedDates={markedDates}
               months={this.months}
               onDaySelect={this.onDaySelect}
               onScroll={this.onScroll}

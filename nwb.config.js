@@ -5,7 +5,9 @@ module.exports = {
     umd: {
       global: 'InfiniteCalendar',
       externals: {
-        react: 'React'
+        react: 'react',
+        "react-dom": 'react-dom',
+        "react-addons-css-transition-group": { commonjs: 'React.addons.CSSTransitionGroup' }
       }
     }
   },

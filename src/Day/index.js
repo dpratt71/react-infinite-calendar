@@ -15,10 +15,11 @@ export default class Day extends PureComponent {
     const {
       day,
       date,
+      isMarked,
       isToday,
       locale: {todayLabel},
       monthShort,
-      theme: {selectionColor, textColor},
+      theme: {selectionColor, markedSelectionColor, textColor},
     } = this.props;
 
     return (
@@ -27,8 +28,8 @@ export default class Day extends PureComponent {
         style={{
           backgroundColor: (
             typeof selectionColor === 'function'
-              ? selectionColor(date)
-              : selectionColor
+              ? selectionColor(date, isMarked)
+              : (isMarked ? markedSelectionColor : selectionColor)
           ),
           color: textColor.active,
         }}
@@ -41,7 +42,7 @@ export default class Day extends PureComponent {
     );
   }
   render() {
-    const {currentYear, date, day, isDisabled, isToday, isSelected, monthShort, theme, year} = this.props;
+    const {currentYear, date, day, isDisabled, isMarked, isToday, isSelected, monthShort, theme, year} = this.props;
 
     return (
 			<li
@@ -51,6 +52,7 @@ export default class Day extends PureComponent {
   [styles.selected]: isSelected,
   [styles.disabled]: isDisabled,
   [styles.enabled]: !isDisabled,
+  [styles.marked]: isMarked,
 })}
 				onClick={this.handleClick}
         data-date={date}

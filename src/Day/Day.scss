@@ -38,6 +38,18 @@
       }
     }
 
+    &.marked {
+      position: relative;
+      z-index: 1;
+
+      &:before {
+        @include circle();
+
+        background-color: yellow;
+        z-index: -1;
+      }
+    }
+
     &:hover:before {
       opacity: 0.5;
     }

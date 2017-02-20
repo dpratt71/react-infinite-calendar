@@ -6,6 +6,7 @@ module.exports = {
   },
   headerColor: '#448AFF',
   selectionColor: '#559FFF',
+  markedSelectionColor: '#32CD32',
   textColor: {
     active: '#FFF',
     default: '#333',

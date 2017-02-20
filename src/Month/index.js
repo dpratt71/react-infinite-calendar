@@ -11,6 +11,7 @@ export default class Month extends Component {
     const {
       disabledDates,
       disabledDays,
+      markedDates,
       displayDate,
       locale,
       maxDate,
@@ -29,6 +30,7 @@ export default class Month extends Component {
     const monthRows = [];
     let day = 0;
     let isDisabled = false;
+    let isMarked = false;
     let isSelected = false;
     let isToday = false;
     let date, days, dow, row;
@@ -59,6 +61,8 @@ export default class Month extends Component {
 					disabledDates && disabledDates.length && disabledDates.indexOf(date) !== -1
 				);
 
+        isMarked = markedDates && markedDates.length && markedDates.indexOf(date) !== -1;
+
         days[k] = (
 					<Day
 						key={`day-${day}`}
@@ -68,6 +72,7 @@ export default class Month extends Component {
 						day={day}
 						onClick={onDaySelect}
 						isDisabled={isDisabled}
+            isMarked={isMarked}
 						isToday={isToday}
 						isSelected={isSelected}
 						locale={locale}
