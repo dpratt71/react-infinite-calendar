@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 module.exports = {
   type: 'react-component',
   npm: {
@@ -5,9 +7,9 @@ module.exports = {
     umd: {
       global: 'InfiniteCalendar',
       externals: {
-        react: 'react',
-        "react-dom": 'react-dom',
-        "react-addons-css-transition-group": { commonjs: 'React.addons.CSSTransitionGroup' }
+        react: 'React',
+        'react-dom': 'ReactDOM',
+        'react-addons-css-transition-group': 'ReactCSSTransitionGroup'
       }
     }
   },
